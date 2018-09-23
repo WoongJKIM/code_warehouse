@@ -52,7 +52,7 @@
    `c.NotebookApp.port_retries = 8888'`<br>
    `#포트 번호 설정`<br>
 5. 실행
- * `$nohup jupyter lab --ip=* --no-browser --port 5051 > jupyter.log &`
+ * `$nohup jupyter lab --ip=* --no-browser --port 8888 > jupyter.log &`
  * 실행 시 꺼지지 않고, 작동 로그가 jupyter.log 파일에 남음
 
 ### 4. 필수 설치 library
@@ -88,11 +88,7 @@
      * `pip install --upgrade oauth2client`
      * `pip install PyOpenSSL`
 
-### 5. DB 터널링
- + 가비아에 있는 DB의 경우 터널링 필요
-   - `ssh -M -S DB명 -fnNT -L 로컬포트:로컬 IP:3306 root@DB IP  -DB포트`
-
-### 6. matplotlib 한글 깨짐
+### 5. matplotlib 한글 깨짐
  + 그래프를 출력할 때 한글이 들어가면 깨지는 현상(matplotlib에 기본 글꼴이 한글을 지원 안해 한글 글꼴을 추가 시켜줘야 함)
    - 나눔글꼴 설치(나눔 글꼴 폰트를 받아 설치하고 캐쉬를 재설정하는 순서)
      * `sudo apt-get update`
@@ -107,13 +103,13 @@
      * 한글이 사용될 부분 앞에 이 문구를 선언
      * `mpl.rc('font', family='NanumGothic')`
 
-### 7. folium에서 IFrame 사용시 한글 깨짐
+### 6. folium에서 IFrame 사용시 한글 깨짐
  + folium에서 IFrame을 한글을 사용할 경우 charset-utf-8이란 지정이 없어 한글이 깨지는 경우가 발생
    - 아래 파일 안에 렌더 함수 내에 html 변수 안에 "data:text/html;base64"->"data:text/html;charset=utf-8;base64"
    - `anaconda3/lib/python3.5/site-packages/folium/element.py`
    - `charset=utf-8`이 부분을 추가
    
-### 8. 파이썬에서 구글 spread sheet 컨트롤
+### 7. 파이썬에서 구글 spread sheet 컨트롤
  + 구글 개발자에서 인증서를 받음
  + gspread 설치
    - `pip install gspread`
